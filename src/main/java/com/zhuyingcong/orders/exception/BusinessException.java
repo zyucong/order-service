@@ -1,4 +1,4 @@
-package com.zhuyingcong.orders.entity;
+package com.zhuyingcong.orders.exception;
 
 public class BusinessException extends RuntimeException {
 
