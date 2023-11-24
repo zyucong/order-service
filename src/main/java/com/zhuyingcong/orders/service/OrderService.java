@@ -1,5 +1,6 @@
 package com.zhuyingcong.orders.service;
 
+import com.zhuyingcong.orders.config.WebConfig;
 import com.zhuyingcong.orders.dao.OrderRepository;
 import com.zhuyingcong.orders.entity.CreateRequest;
 import com.zhuyingcong.orders.entity.Order;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
 import java.util.List;
@@ -29,15 +31,19 @@ public class OrderService {
     private ValidateService validateService;
 
     @Autowired
+    private DistanceService distanceService;
+
+    @Autowired
     private OrderRepository orderRepository;
 
     public OrderDetail createOrder(CreateRequest request){
         validateService.validateCoordinates(request.getOrigin());
         validateService.validateCoordinates(request.getDestination());
+        int distance = distanceService.getDistance(request.getOrigin(), request.getDestination());
         Order order = new Order();
         order.setOrigin(request.getOrigin().toString());
         order.setDestination(request.getDestination().toString());
-        order.setDistance(0);
+        order.setDistance(distance);
         order.setStatus(OrderStatus.UNASSIGNED.getStatus());
         order.setCreateTime(System.currentTimeMillis());
         order.setUpdateTime(System.currentTimeMillis());
