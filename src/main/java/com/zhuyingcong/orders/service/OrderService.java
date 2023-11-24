@@ -32,14 +32,8 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     public OrderDetail createOrder(CreateRequest request){
-//        try {
-            validateService.validateCoordinates(request.getOrigin());
-            validateService.validateCoordinates(request.getDestination());
-//        } catch (InvalidDataException ex) {
-//            // throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ErrorEnum.INVALID_INPUT.getMessage());
-//            // return ResponseEntity.badRequest().body(new ErrorMsg(ErrorEnum.INVALID_INPUT.getMessage()));
-//            throw new BusinessException(ex.getMessage());
-//        }
+        validateService.validateCoordinates(request.getOrigin());
+        validateService.validateCoordinates(request.getDestination());
         Order order = new Order();
         order.setOrigin(request.getOrigin().toString());
         order.setDestination(request.getDestination().toString());
