@@ -12,8 +12,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.List;
 
-import static com.zhuyingcong.orders.config.GoogleMapKey.GOOGLE_MAP_API_KEY;
-import static com.zhuyingcong.orders.config.WebConfig.*;
+import static com.zhuyingcong.orders.config.GoogleMapKey.*;
 
 @Service
 public class DistanceService {
@@ -42,7 +41,7 @@ public class DistanceService {
         Request request = new Request.Builder()
                 .url(MAP_API_URL)
                 .header("Content-Type", "application/json")
-                .header(API_KEY_HEADER, GOOGLE_MAP_API_KEY)
+                .header(API_KEY_HEADER, getGoogleMapApiKey())
                 .header(FIELD_MASK_HEADER, FIELD_MASK_VALUE)
                 .post(body)
                 .build();
