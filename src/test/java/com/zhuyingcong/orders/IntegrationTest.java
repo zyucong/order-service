@@ -2,7 +2,6 @@ package com.zhuyingcong.orders;
 
 import com.zhuyingcong.orders.dao.OrderRepository;
 import com.zhuyingcong.orders.entity.CreateRequest;
-import com.zhuyingcong.orders.entity.Order;
 import com.zhuyingcong.orders.entity.StatusBody;
 import com.zhuyingcong.orders.enums.OrderStatus;
 import org.json.JSONObject;
@@ -18,7 +17,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -41,6 +39,7 @@ public class IntegrationTest {
         createOrders();
         queryOrders();
         takeOrder();
+        queryOrders();
     }
 
     @Test
@@ -179,9 +178,4 @@ public class IntegrationTest {
                 ;
     }
 
-//    @Test
-//    public void fetchOrder() {
-//        List<Order> order = orderRepository.findAll();
-//        System.out.println(order.size());
-//    }
 }

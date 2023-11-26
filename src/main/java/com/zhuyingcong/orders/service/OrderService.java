@@ -1,6 +1,5 @@
 package com.zhuyingcong.orders.service;
 
-import com.zhuyingcong.orders.config.WebConfig;
 import com.zhuyingcong.orders.dao.OrderRepository;
 import com.zhuyingcong.orders.entity.CreateRequest;
 import com.zhuyingcong.orders.entity.Order;
@@ -16,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
 import java.util.List;
@@ -72,7 +70,6 @@ public class OrderService {
     }
 
     public List<OrderDetail> queryOrders(int page, int limit) {
-        logger.info("page:{}, limit:{}", page, limit);
         validateService.validateQuery(page, limit);
         Pageable pageable = PageRequest.of(page - 1, limit);
         Page<Order> orders = orderRepository.findAll(pageable);
