@@ -41,8 +41,10 @@ public class OrderService {
         validateService.validateCoordinates(request.getDestination());
         int distance = distanceService.getDistance(request.getOrigin(), request.getDestination());
         Order order = new Order();
-        order.setOrigin(request.getOrigin().toString());
-        order.setDestination(request.getDestination().toString());
+        order.setOriginLatitude(request.getOrigin().get(0));
+        order.setOriginLongitude(request.getOrigin().get(1));
+        order.setDestinationLatitude(request.getDestination().get(0));
+        order.setDestinationLongitude(request.getDestination().get(1));
         order.setDistance(distance);
         order.setStatus(OrderStatus.UNASSIGNED.getStatus());
         order.setCreateTime(System.currentTimeMillis());
@@ -70,6 +72,7 @@ public class OrderService {
     }
 
     public List<OrderDetail> queryOrders(int page, int limit) {
+        logger.info("page:{}, limit:{}", page, limit);
         validateService.validateQuery(page, limit);
         Pageable pageable = PageRequest.of(page - 1, limit);
         Page<Order> orders = orderRepository.findAll(pageable);

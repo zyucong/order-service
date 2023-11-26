@@ -32,10 +32,11 @@ public class DistanceService {
                 "\"longitude\": " + origin.get(1) + "} } }," +
                 "\"destination\": {\"location\": { \"latLng\": {" +
                 "\"latitude\": " + destination.get(0) + ", " +
-                "\"longitude\": " + destination.get(1) + "} } }" +
+                "\"longitude\": " + destination.get(1) + "} } }," +
+                "\"travelMode\": \"DRIVE\" " +
                 "}";
         JSONObject bodyObject = new JSONObject(str);
-        logger.info("body:{}", bodyObject);
+        // logger.info("body:{}", bodyObject);
         RequestBody body = RequestBody.create(str, MEDIA_TYPE_JSON);
         OkHttpClient client = webConfig.httpClient();
         Request request = new Request.Builder()
@@ -50,7 +51,7 @@ public class DistanceService {
                 throw new IOException("Unexpected code " + response);
             }
             String responseBody = response.body().string();
-            logger.info("response:{}", responseBody);
+            // logger.info("response:{}", responseBody);
             JSONObject respObj = new JSONObject(responseBody);
             JSONArray routes = respObj.getJSONArray("routes");
             JSONObject distanceMeters = routes.getJSONObject(0);

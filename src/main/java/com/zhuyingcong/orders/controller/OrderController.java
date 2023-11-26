@@ -27,7 +27,7 @@ public class OrderController {
                               HttpServletResponse response) {
         assert request != null;
         OrderDetail detail = orderService.createOrder(request);
-        logger.info("success");
+        // logger.info("success");
         return ResponseEntity.ok().body(detail);
     }
 
@@ -37,7 +37,7 @@ public class OrderController {
         assert id != null;
         assert request != null;
         StatusBody resp = orderService.takeOrder(id, request);
-        logger.info("success");
+        // logger.info("success");
         return ResponseEntity.ok().body(resp);
     }
 
@@ -45,7 +45,7 @@ public class OrderController {
     public Object listOrders(@RequestParam(value = "page", defaultValue = "0") int page,
                              @RequestParam(value = "limit", defaultValue = "0") int limit) {
         List<OrderDetail> details = orderService.queryOrders(page, limit);
-        logger.info("success");
+        // logger.info("success");
         return ResponseEntity.ok().body(details);
     }
 }

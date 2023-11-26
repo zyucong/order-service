@@ -29,4 +29,13 @@ public class OrderDetail {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "OrderDetail{" +
+                "id=" + id +
+                ", distance=" + distance +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
