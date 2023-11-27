@@ -7,7 +7,7 @@ One table named `orders` is used to store data generated in the service. You can
 
 # How to set up
 
-1. Go to  `docker-compose.yml` , change the value of `GOOGLE_MAP_API_KEY` from `YOUR API KEY HERE` to the Google Map API Key you used.
+1. Go to  `docker-compose.yml` , change the value of `GOOGLE_MAP_API_KEY` from `YOUR_API_KEY_HERE` to the Google Map API Key you used.
 
 2. Make sure the username, password and schema you used in `docker-compose.yml` is aligned with `application.properties`
 
