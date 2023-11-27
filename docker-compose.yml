@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  orders:
+    build:
+      context: .
+      target: development
+    ports:
+      - "8080:8080"
+    environment:
+      - SERVER_PORT=8080
+      - MYSQL_URL=jdbc:mysql://mysqlserver/test
+      - GOOGLE_MAP_API_KEY=YOUR_API_KEY_HERE
+    volumes:
+      - ./:/app
+    depends_on:
+      - mysqlserver
+
+  mysqlserver:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=zhuyingcong
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=zhu
+      - MYSQL_PASSWORD=zhuyingcong
+      - MYSQL_DATABASE=test
+    volumes:
+      - mysql_data:/usr/local/mysql
+      - mysql_config:/etc/mysql/conf.d
+volumes:
+  mysql_data:
+  mysql_config:
