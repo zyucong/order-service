@@ -1,4 +1,4 @@
-DROP TABLE `orders` IF EXISTS;
+DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
 	`id` int NOT NULL AUTO_INCREMENT,
     `origin_latitude` varchar(100) NOT NULL,
