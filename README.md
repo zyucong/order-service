@@ -11,7 +11,7 @@ One table named `orders` is used to store data generated in the service. You can
 
 2. Make sure the username, password and schema you used in `docker-compose.yml` is aligned with `application.properties`
 
-3. Run ` docker compose -f docker-compose.yml up --build` command in the root of project folder.
+3. Run `docker compose -f docker-compose.yml up --build` command in the root of project folder.
 
 If you ever need to wipe out the database and restart the service,
 ```shell
