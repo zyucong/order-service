@@ -18,7 +18,7 @@ If you ever need to wipe out the database and restart the service,
 docker-compose down -v
 ```
 
-Alternatively, you can
+**Alternatively**, you can
 1. Build the docker image first `docker build --tag order-service .`
 2. Create volume and network
 ```shell
